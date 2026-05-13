@@ -1,7 +1,7 @@
 import { GoogleGenAI, Modality } from "@google/genai";
 import { LearnerProfile, Exercise, ExerciseType, ExerciseResult, ProgressReport } from "../types";
 
-const getAi = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getAi = () => new GoogleGenAI({ apiKey: (import.meta as any).env.VITE_GEMINI_API_KEY || '' });
 
 // ─── PDF ──────────────────────────────────────────────────────────────────────
 

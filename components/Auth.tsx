@@ -53,13 +53,13 @@ export const Auth: React.FC<AuthProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center px-6 animate-slide-up">
+    <div className="w-full h-full flex flex-col items-center justify-center px-3 max-[360px]:px-2 sm:px-6 lg:px-10 py-6 max-[360px]:py-4 sm:py-0 animate-slide-up">
       <div className="mb-8">
-        <img src="/Lockup-White.png" alt="The Bridge Logo" className="h-28 object-contain mx-auto" />
+        <img src="/Lockup-White.png" alt="The Bridge Logo" className="h-20 max-[360px]:h-16 sm:h-24 lg:h-28 object-contain mx-auto" />
       </div>
-      <h1 className="brand text-4xl font-bold mb-8 tracking-tight text-white">The Bridge</h1>
+      <h1 className="brand text-2xl max-[360px]:text-xl sm:text-3xl lg:text-4xl font-bold mb-5 sm:mb-8 tracking-tight text-white">The Bridge</h1>
       
-      <div className="glass-strong rounded-2xl p-8 w-full max-w-md shadow-2xl relative overflow-hidden">
+      <div className="glass-strong rounded-2xl p-5 max-[360px]:p-4 sm:p-7 lg:p-8 w-full max-w-md lg:max-w-lg shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 to-violet-600" />
         
         <div className="text-center mb-8">

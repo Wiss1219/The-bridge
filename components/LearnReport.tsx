@@ -51,12 +51,12 @@ export const LearnReport: React.FC<Props> = ({ report, profile, xpEarned, onCont
   const dashOffset = circumference * (1 - report.overallScore / 100);
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-5 space-y-4 animate-slide-up overflow-y-auto h-full">
+    <div className="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-3 max-[360px]:px-2 sm:px-4 lg:px-8 py-5 max-[360px]:py-4 space-y-4 animate-slide-up overflow-y-auto h-full">
 
       {/* Score + XP header */}
       <div className="glass-strong rounded-2xl p-5 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/8 to-violet-600/8 pointer-events-none" />
-        <div className="flex items-center gap-5">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
           {/* Circular score */}
           <div className="relative shrink-0">
             <svg width="80" height="80" className="-rotate-90">
@@ -66,7 +66,7 @@ export const LearnReport: React.FC<Props> = ({ report, profile, xpEarned, onCont
                 strokeLinecap="round" style={{ transition: 'stroke-dashoffset 1s ease', filter: `drop-shadow(0 0 6px ${scoreColor})` }} />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-xl font-bold text-white">{report.overallScore}%</span>
+              <span className="text-lg sm:text-xl lg:text-2xl font-bold text-white">{report.overallScore}%</span>
             </div>
           </div>
 
@@ -85,7 +85,7 @@ export const LearnReport: React.FC<Props> = ({ report, profile, xpEarned, onCont
           </div>
 
           {/* Level badge */}
-          <div className="shrink-0 text-center">
+          <div className="shrink-0 text-center sm:text-right">
             <div className={`px-3 py-1.5 rounded-xl bg-gradient-to-r ${LEVEL_GRADIENT[report.nextDifficulty]} text-white text-xs font-bold mb-1`}>
               {report.nextDifficulty}
             </div>
@@ -112,7 +112,7 @@ export const LearnReport: React.FC<Props> = ({ report, profile, xpEarned, onCont
       </div>
 
       {/* Strengths & weaknesses */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div className="glass rounded-xl p-4">
           <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-medium mb-2">
             <CheckCircle size={12} /> Strengths
@@ -161,7 +161,7 @@ export const LearnReport: React.FC<Props> = ({ report, profile, xpEarned, onCont
       </div>
 
       {/* Actions */}
-      <div className="grid grid-cols-2 gap-3 pb-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-2">
         <button onClick={() => onContinue(updatedProfile)}
           className="py-3 rounded-xl bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold text-sm hover:from-blue-500 hover:to-violet-500 transition-all glow-blue flex items-center justify-center gap-2">
           <BookOpen size={15} /> Continue <ArrowRight size={15} />

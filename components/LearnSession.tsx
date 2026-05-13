@@ -133,10 +133,10 @@ export const LearnSession: React.FC<Props> = ({ profile, pdfContext, onSessionEn
   const typeInfo = exercise ? TYPE_LABELS[exercise.type] : null;
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-4 space-y-4 animate-slide-up overflow-y-auto h-full">
+    <div className="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-3 max-[360px]:px-2 sm:px-4 lg:px-8 py-4 max-[360px]:py-3 space-y-4 animate-slide-up overflow-y-auto h-full">
       {/* Header stats */}
-      <div className="flex items-center gap-3">
-        <div className="glass rounded-xl px-4 py-2 flex items-center gap-2 flex-1">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+        <div className="glass rounded-xl px-4 py-2 flex items-center gap-2 flex-1 w-full">
           <Sparkles size={14} className="text-blue-400" />
           <span className="text-white/50 text-xs">{profile.subject}</span>
           <span className="text-white/20 text-xs">·</span>
@@ -148,12 +148,12 @@ export const LearnSession: React.FC<Props> = ({ profile, pdfContext, onSessionEn
         </div>
 
         {/* Timer UI */}
-        {phase === 'question' && (
-          <div className="glass rounded-xl px-3 py-2 flex items-center gap-1">
-            <span className={`text-sm font-bold ${timeLeft <= 10 ? 'text-rose-400 animate-pulse' : 'text-blue-300'}`}>0:{timeLeft.toString().padStart(2, '0')}</span>
-          </div>
-        )}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          {phase === 'question' && (
+            <div className="glass rounded-xl px-3 py-2 flex items-center gap-1">
+              <span className={`text-sm font-bold ${timeLeft <= 10 ? 'text-rose-400 animate-pulse' : 'text-blue-300'}`}>0:{timeLeft.toString().padStart(2, '0')}</span>
+            </div>
+          )}
           {streak > 1 && (
             <div className="glass rounded-xl px-3 py-2 flex items-center gap-1">
               <Flame size={14} className="text-orange-400" />
@@ -196,6 +196,11 @@ export const LearnSession: React.FC<Props> = ({ profile, pdfContext, onSessionEn
               <p className="text-white/40 text-sm animate-pulse" dir="auto">
                 {isExplaining ? 'Tutor is thinking deeply…' : (phase === 'evaluating' ? 'AI is evaluating your answer…' : 'Crafting your personalized exercise…')}
               </p>
+              <div className="w-48 sm:w-64">
+                <div className="fake-progress-track">
+                  <div className="fake-progress-bar" />
+                </div>
+              </div>
             </div>
           )}
 
@@ -208,7 +213,7 @@ export const LearnSession: React.FC<Props> = ({ profile, pdfContext, onSessionEn
               </div>
 
               {/* Question */}
-              <h3 className="text-white text-base font-semibold leading-relaxed" dir="auto">{exercise.question}</h3>
+              <h3 className="text-white text-sm max-[360px]:text-[13px] sm:text-base lg:text-lg font-semibold leading-relaxed" dir="auto">{exercise.question}</h3>
 
               {/* MCQ / True-False */}
               {(exercise.type === 'mcq' || exercise.type === 'true_false') && exercise.options && (

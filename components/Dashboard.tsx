@@ -108,10 +108,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, profile, onStart }) 
 
   // ── SETUP ─────────────────────────────────────────────────────────────────
   if (step === 'setup') return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-6 space-y-5 animate-slide-up overflow-y-auto h-full">
+    <div className="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-3 max-[360px]:px-2 sm:px-4 lg:px-8 py-5 max-[360px]:py-4 space-y-5 animate-slide-up overflow-y-auto h-full">
       <div className="text-center mb-2">
-        <h2 className="brand text-2xl font-bold text-white">Configure Your Learning Path</h2>
-        <p className="text-white/40 text-sm mt-1">The AI will adapt everything to your choices</p>
+        <h2 className="brand text-xl max-[360px]:text-lg sm:text-2xl lg:text-3xl font-bold text-white">Configure Your Learning Path</h2>
+        <p className="text-white/40 text-xs sm:text-sm mt-1">The AI will adapt everything to your choices</p>
       </div>
 
       {/* Name */}
@@ -127,7 +127,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, profile, onStart }) 
       {/* Subject */}
       <div className="glass rounded-xl p-4 space-y-3">
         <label className="text-xs text-white/50 uppercase tracking-wider">Subject</label>
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3">
           {SUBJECTS.map(s => (
             <button key={s} onClick={() => setSubject(s)}
               className={`p-2.5 rounded-lg border text-center transition-all flex flex-col items-center gap-1 ${
@@ -144,7 +144,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, profile, onStart }) 
       </div>
 
       {/* Level & Language Row */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
         {/* Level */}
         <div className="glass rounded-xl p-4 space-y-3">
           <label className="text-xs text-white/50 uppercase tracking-wider">Starting Level</label>
@@ -190,7 +190,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, profile, onStart }) 
       {/* Session Length */}
       <div className="glass rounded-xl p-4 space-y-3">
         <label className="text-xs text-white/50 uppercase tracking-wider">Session Length</label>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 lg:gap-3">
           {[
             { val: 3, label: 'Quick', desc: '3 Exercises' },
             { val: 5, label: 'Standard', desc: '5 Exercises' },
@@ -242,11 +242,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, profile, onStart }) 
 
   // ── READY / DASHBOARD ─────────────────────────────────────────────────────
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-6 space-y-5 animate-slide-up overflow-y-auto h-full">
+    <div className="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-3 max-[360px]:px-2 sm:px-4 lg:px-8 py-5 max-[360px]:py-4 space-y-5 animate-slide-up overflow-y-auto h-full">
       {/* Profile Banner */}
       <div className="glass-strong rounded-2xl p-5 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-violet-600/10 pointer-events-none" />
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
           <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center text-2xl font-bold text-white glow-blue shrink-0">
             {builtProfile.name[0]?.toUpperCase()}
           </div>
@@ -254,13 +254,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, profile, onStart }) 
             <div className="font-bold text-white text-lg">{builtProfile.name}</div>
             <div className="text-white/40 text-sm">{builtProfile.subject} · <span className="text-blue-400">{builtProfile.currentLevel}</span></div>
           </div>
-          <button onClick={() => setStep('setup')} className="text-xs text-white/30 hover:text-white/60 transition-colors px-3 py-1 glass rounded-lg">Edit</button>
+          <button onClick={() => setStep('setup')} className="text-xs text-white/30 hover:text-white/60 transition-colors px-3 py-1 glass rounded-lg self-start sm:self-auto">Edit</button>
         </div>
         <XPBar xp={builtProfile.totalXP} />
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:gap-4">
         <StatCard icon={<Award size={14} className="text-white" />} label="Sessions" value={builtProfile.sessionsCompleted} color="from-blue-500 to-cyan-500" />
         <StatCard icon={<Target size={14} className="text-white" />} label="Weak Areas" value={builtProfile.weakAreas.length || '—'} color="from-rose-500 to-pink-500" />
         <StatCard icon={<TrendingUp size={14} className="text-white" />} label="Total XP" value={builtProfile.totalXP} color="from-violet-500 to-purple-500" />

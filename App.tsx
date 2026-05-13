@@ -177,20 +177,20 @@ export default function App() {
   // ── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-[#080C18] flex flex-col">
+    <div className="relative w-full min-h-screen min-h-[100dvh] overflow-hidden bg-[#080C18] flex flex-col">
       {/* Dark overlay gradient */}
       <div className="absolute inset-0 z-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.06) 0%, transparent 70%)' }} />
 
       {/* Navbar */}
-      <header className="relative z-20 flex items-center justify-between px-6 py-4 border-b border-white/5 shrink-0"
+      <header className="relative z-20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-3 max-[360px]:px-2 sm:px-6 py-3 max-[360px]:py-2 border-b border-white/5 shrink-0"
         style={{ background: 'rgba(8,12,24,0.8)', backdropFilter: 'blur(20px)' }}>
         <div className="flex items-center gap-3">
           <img src="/Lockup-White.png" alt="The Bridge Logo" className="h-10 object-contain" />
           <span className="brand font-bold text-white text-xl tracking-tight">The Bridge</span>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
           {user && (
             <div className="flex items-center gap-2 glass rounded-full px-3 py-1.5">
               <span className="text-white/70 text-xs font-medium px-2 border-r border-white/10">Welcome, {user.name}</span>
@@ -217,7 +217,7 @@ export default function App() {
       </header>
 
       {/* Main content */}
-      <main className="relative z-10 flex-1 overflow-hidden flex items-start justify-center">
+      <main className="relative z-10 flex-1 overflow-y-auto overflow-x-hidden flex items-start justify-center">
         {/* Prepping overlay */}
         {isPrepping && (
           <div className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-6"
@@ -225,6 +225,11 @@ export default function App() {
             <img src="/Lockup-White.png" alt="The Bridge Logo" className="h-20 object-contain" />
             <h2 className="brand text-3xl font-bold text-white">The Bridge</h2>
             <p className="text-white/50 text-sm animate-pulse mt-2">Reading your course material…</p>
+            <div className="w-56 sm:w-72">
+              <div className="fake-progress-track">
+                <div className="fake-progress-bar" />
+              </div>
+            </div>
           </div>
         )}
 

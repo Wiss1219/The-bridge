@@ -31,7 +31,9 @@
       font-family: 'Inter', sans-serif;
       background: #080C18;
       color: white;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     h1,
@@ -189,6 +191,38 @@
       animation: progress-fill 0.6s ease-out forwards;
     }
 
+    /* Fake loading bar */
+    @keyframes fake-progress {
+      0% {
+        transform: translateX(-60%);
+      }
+
+      100% {
+        transform: translateX(160%);
+      }
+    }
+
+    .fake-progress-track {
+      position: relative;
+      height: 6px;
+      width: 100%;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .fake-progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 40%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.6));
+      animation: fake-progress 1.6s ease-in-out infinite;
+    }
+
     /* Orbit dot */
     .orbit-dot {
       animation: orbit 3s linear infinite;
@@ -222,7 +256,6 @@
   }
 }
 </script>
-  <link rel="stylesheet" href="/index.css">
 </head>
 
 <body>
