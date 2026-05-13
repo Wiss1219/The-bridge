@@ -1,0 +1,8 @@
+{
+  "name": "TriviaVerse AI",
+  "description": "A 3D immersive trivia game hosted by a dynamic AI personality. Features real-time voice conversation powered by Gemini Live API, accurate questions via Google Search, and expressive TTS.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": []
+}
